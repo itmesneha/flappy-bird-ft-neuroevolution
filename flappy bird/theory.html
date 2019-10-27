@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <script src="libraries/addons/p5.js"></script>
+    <script src="libraries/addons/p5.dom.js"></script>
+    <!-- <script src="sketch2.js"></script>
+    <script src="bird.js"></script>
+    <script src="bird1.js"></script>
+    <script src="pipe.js"></script>
+    <script src="pipe1.js"></script>
+    <script src="ga.js"></script> -->
+    <script src="libraries/addons/nn_mine.js"></script>
+    <script src="libraries/addons/matrix_mine.js"></script>
+    <!-- <script src="sketch2.js"></script> -->
+
+    <style>
+    body {
+      background-color: #380504;
+      text-align: center;
+      color: white;
+      font-size: 70px;
+    }
+    .smol_text {
+      text-align: left;
+      color: white;
+       padding: 10px 150px;
+      font-size: 20px;
+    }
+    .button {
+        background-color: #1c87c9;
+         border-radius: 20px;
+         color: white;
+         padding: 20px 34px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 20px;
+         margin: 4px 2px;
+         cursor: pointer;
+    }
+    .button:hover {
+      color: red;
+    }
+    h1 {
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 4vw;
+  text-align: center;
+  font-weight: 900;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  background-size: 120% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -ms-background-clip: text;
+  -ms-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  background-color: #47ff3a;
+  animation: 0.2s shake infinite alternate;
+}
+
+@keyframes shake {
+  0% { transform: skewX(-15deg); }
+  5% { transform: skewX(15deg); }
+  10% { transform: skewX(-15deg); }
+  15% { transform: skewX(15deg); }
+  20% { transform: skewX(0deg); }
+  100% { transform: skewX(0deg); }
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+    </style>
+  </head>
+  <body>
+    <marquee direction="right" scrollamount="20"><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100></marquee>
+     <h1>Flappy Bird ft. Neuroevolution!</h1>
+    <br>
+     <div class = smol_text>This project was made using neural networks with a sprinkle of genetic algorithms.<br><br>
+     <img src = "assets/nn.jpeg" class = "center"><br><br>
+     This is a neural network. The origins of neural networks come from human life, from as the name suggests neurons. The design is roughly based on the biological working of neurons in the brain. In our brain neurons have millions, no billions of connections between them to make us the functioning humans that we are today. So to make a computer learn how to do something requires a much smaller fraction of these connections, but still a substantial amount.
+     <br><br><br>
+     A neural network is used to model a non-linear mathematical function. Of course, it can model linear functions as well, but that would be a very trivial usage of a neural network.<br><br><br>
+     The first layer is the input layer. Here we choose what to feed into our neural network. To make the computer learn how to play flappy bird our inputs are:<br><br><br>
+     1. The x position of the bird <br>
+     2. The x position of the closest pipe. <br>
+     3. The y position of the top of the closest pipe. <br>
+     4. The y position of the bottom of the closest pipe. <br>
+     <br><br><br>
+     The next layer is the hidden layer. This layer is responsible for a lot of the calculations (the math) that goes on behind the functioning of a neural network. Each input has a certain weight. We add up the products of the weight of each input along with the input value itself, plus a bias and feed it to the hidden layer.<br><br><br>
+     The hidden layer will have its own weights. A similar sum of products is done at this layer as well and the results are forwarded to the output layer. For this application, my outputs will range from 0 to 1. An output greater than 0.5 will make the bird jump, lesser than that the bird will not jump. <br><br><br>
+     For this particular project I am using a model called reinforcement learning - which basically means that when the model makes a good decision it is rewarded.<br><br><br>
+     The game starts off with a generation. Each generation has 500 birds. These birds have brains and each brain is a random neural network. Everytime a bird hits a pipe it is removed from the generation. If it passes a pipe it's score is upped - it is rewarded. When the number of birds eventually dwindles down to zero, a completely new generation is formed.<br><br><br>
+     But how is this new generation formed?<br><br><br>
+     Well, we calculate the fitness of the previous generation, which is the normalized sum of the scores of all the birds in the last generation. If it is a good fitness, we use the last remaining bird's brain a.k.a. neural network. We copy this neural network, then mutate it a little. We mutate the weights of the neural network by about 0.1 over a gaussian distribution. Then we use this neural network as the base of the new generation of birds.<br><br><br>
+     Eventually we will have a couple (or an entire generation, depending on how long you train the model of course!) of super birds that can pass all the pipes flawlessly, ergo much better than you can.<br><br><br>
+     Don't believe me? Try it yourself!<br><br>
+     <a href = "index_play.html" class = "button" target = "_blank">Click to Play!</a>
+     <a href = "index_watch.html" class = "button" target = "_blank">Click to Watch!</a>
+     </div>
+     <marquee scrollamount="20"><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100><img src = "assets/flappy.jpg" width = 400 height = 100></marquee>
+
+  </body>
+</html>

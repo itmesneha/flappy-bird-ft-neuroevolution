@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <script src="libraries/addons/p5.js"></script>
+    <script src="libraries/addons/p5.dom.js"></script>
+    <script src="sketch_play.js"></script>
+    <script src="bird1.js"></script>
+    <script src="pipe1.js"></script>
+
+    <style>
+    body {
+      background-color: #380504;
+      text-align: center;
+      color: white;
+      font-size: 70px;
+    }
+    .smol_text {
+      text-align: center;
+      color: white;
+      font-size: 20px;
+    }
+    .button {
+        background-color: #1c87c9;
+         border-radius: 20px;
+         color: white;
+         padding: 20px 34px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 20px;
+         margin: 4px 2px;
+         cursor: pointer;
+    }
+    .button:hover {
+      color: red;
+    }
+    .title {
+      font-size: 70;
+  display: inline-block;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -ms-background-clip: text;
+  -ms-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  background-color: #47ff3a;
+  animation: 0.2s shake infinite alternate;
+}
+
+@keyframes shake {
+  0% { transform: skewX(-15deg); }
+  5% { transform: skewX(15deg); }
+  10% { transform: skewX(-15deg); }
+  15% { transform: skewX(15deg); }
+  20% { transform: skewX(0deg); }
+  100% { transform: skewX(0deg); }
+}
+    </style>
+  </head>
+  <body>
+    <div class = "title">Play Flappy Bird!</div>
+    <p class = "smol_text">Score: 0  &nbsp&nbsp&nbsp&nbsp&nbsp Press the spacebar to make the bird jump!</p>
+    <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp -->
+    <br /><br /><br /><br /><br />
+    <!-- <div class = "smol_text">Score = 0</div> -->
+    <a href = "index_watch.html" class = "button" target = "_blank">Click to watch the computer play!</a>
+    <br />
+  </body>
+</html>
